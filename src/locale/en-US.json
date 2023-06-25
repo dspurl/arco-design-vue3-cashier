@@ -1,5 +1,8 @@
 {
-    "menu.dashboard": "Dashboard",
+    "menu.dashboard": "Cashier",
+    "menu.indent": "Indent",
+    "menu.member": "Member",
+    "menu.backstage": "Backstage",
     "menu.server.dashboard": "Dashboard-Server",
     "menu.server.workplace": "Workplace-Server",
     "menu.server.monitor": "Monitor-Server",
@@ -10,8 +13,6 @@
     "menu.profile": "Profile",
     "menu.visualization": "Data Visualization",
     "menu.user": "User Center",
-    "menu.arcoWebsite": "Arco Design",
-    "menu.faq": "FAQ",
     "navbar.docs": "Docs",
     "navbar.action.locale": "Switch to English",
     "messageBox.tab.title.message": "Message",

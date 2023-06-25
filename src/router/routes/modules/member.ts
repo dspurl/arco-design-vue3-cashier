@@ -2,27 +2,26 @@ import { DEFAULT_LAYOUT } from '../base';
 import { AppRouteRecordRaw } from '../types';
 
 const DASHBOARD: AppRouteRecordRaw = {
-  path: '/dashboard',
-  name: 'Dashboard',
+  path: '/memberManage',
+  name: 'MemberManage',
   component: DEFAULT_LAYOUT,
-  redirect: '/cashier',
+  redirect: '/member',
   meta: {
-    locale: 'menu.dashboard',
+    locale: 'menu.member',
     requiresAuth: true,
     hideChildrenInMenu: true,
-    icon: 'icon-archive',
-    order: 0,
+    icon: 'icon-user',
   },
   children: [
     {
-      path: '/cashier',
-      name: 'Cashier',
-      component: () => import('@/views/dashboard/index.vue'),
+      path: '/member',
+      name: 'Member',
+      component: () => import('@/views/member/index.vue'),
       meta: {
-        locale: 'menu.dashboard',
+        locale: 'menu.member',
         requiresAuth: true,
         roles: ['*'],
-        activeMenu: 'Dashboard',
+        activeMenu: 'MemberManage',
       },
     },
   ],

@@ -2,27 +2,26 @@ import { DEFAULT_LAYOUT } from '../base';
 import { AppRouteRecordRaw } from '../types';
 
 const DASHBOARD: AppRouteRecordRaw = {
-  path: '/dashboard',
-  name: 'Dashboard',
+  path: '/indentManage',
+  name: 'IndentManage',
   component: DEFAULT_LAYOUT,
-  redirect: '/cashier',
+  redirect: '/indent',
   meta: {
-    locale: 'menu.dashboard',
+    locale: 'menu.indent',
     requiresAuth: true,
     hideChildrenInMenu: true,
     icon: 'icon-archive',
-    order: 0,
   },
   children: [
     {
-      path: '/cashier',
-      name: 'Cashier',
-      component: () => import('@/views/dashboard/index.vue'),
+      path: '/indent',
+      name: 'Indent',
+      component: () => import('@/views/indent/index.vue'),
       meta: {
-        locale: 'menu.dashboard',
+        locale: 'menu.indent',
         requiresAuth: true,
         roles: ['*'],
-        activeMenu: 'Dashboard',
+        activeMenu: 'IndentManage',
       },
     },
   ],

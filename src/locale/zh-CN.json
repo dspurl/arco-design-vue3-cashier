@@ -1,5 +1,8 @@
 {
-    "menu.dashboard": "仪表盘",
+    "menu.dashboard": "收银",
+    "menu.indent": "订单",
+    "menu.member": "会员",
+    "menu.backstage": "后台",
     "menu.server.dashboard": "仪表盘-服务端",
     "menu.server.workplace": "工作台-服务端",
     "menu.server.monitor": "实时监控-服务端",
@@ -10,8 +13,6 @@
     "menu.profile": "详情页",
     "menu.visualization": "数据可视化",
     "menu.user": "个人中心",
-    "menu.arcoWebsite": "Arco Design",
-    "menu.faq": "常见问题",
     "navbar.docs": "文档中心",
     "navbar.action.locale": "切换为中文",
     "settings.title": "页面配置",
