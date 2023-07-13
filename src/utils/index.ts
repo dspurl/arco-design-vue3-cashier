@@ -22,4 +22,10 @@ export const regexUrl = new RegExp(
   'i'
 );
 
+// 千分位
+export const thousands = (num: string) => {
+  return parseFloat(num)
+    .toFixed(2)
+    .replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+};
 export default null;

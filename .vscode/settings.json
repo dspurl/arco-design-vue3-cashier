@@ -7,6 +7,5 @@
     "i18n-ally.enabledParsers": ["json"], // 翻译支持的语言文件格式
     "i18n-ally.sourceLanguage": "zh-CN", // 根据此 cn 语言文件翻译其他语言文件的 变量和内容
     "i18n-ally.displayLanguage": "zh-CN", // 组件中显示的语言
-    "i18n-ally.keystyle": "flat",
-    "vue.codeActions.enabled": false
+    "i18n-ally.keystyle": "flat"
 }

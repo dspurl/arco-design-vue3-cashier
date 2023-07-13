@@ -1,22 +1,41 @@
 import axios from 'axios';
-import type { TableData } from '@arco-design/web-vue/es/table/interface';
 
-export interface ContentDataRecord {
-  x: string;
-  y: number;
+export interface CommoditySkuProductRecord {
+  key: string;
+  value: string;
+}
+export interface CommoditySkuRecord {
+  id?: number;
+  price?: number;
+  img?: string;
+  inventory?: number;
+  product?: Array<CommoditySkuProductRecord>[];
+}
+export interface CommodityRecord {
+  id: number;
+  name?: string;
+  price: number;
+  img?: string;
+  no?: string;
+  number: number;
+  inventory: number;
+  classify_id?: number;
+  sku?: Array<CommoditySkuRecord>[];
+  specification?: any;
+  productSkus?: any;
+  ids?: string;
+  product?: any;
 }
 
-export function queryContentData() {
-  return axios.get<ContentDataRecord[]>('/api/content-data');
+export function commodityList(params: { classifyId: number; keyword: string }) {
+  return axios.get<CommodityRecord[]>('/api/commodity/list', { params });
 }
 
-export interface PopularRecord {
-  key: number;
-  clickNumber: string;
-  title: string;
-  increases: number;
+export interface ClassifyRecord {
+  id: number;
+  name: string;
 }
 
-export function queryPopularList(params: { type: string }) {
-  return axios.get<TableData[]>('/api/popular/list', { params });
+export function classifyList() {
+  return axios.get<ClassifyRecord[]>('/api/classify/list');
 }

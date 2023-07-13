@@ -25,3 +25,19 @@ export function getUserInfo() {
 export function getMenuList() {
   return axios.post<RouteRecordNormalized[]>('/api/user/menu');
 }
+
+export interface UserRecord {
+  nickname: string;
+  cellphone?: string;
+  portrait?: string;
+  money?: number;
+  id?: number;
+}
+
+export function userList(params: { keyword: string; page: number }) {
+  return axios.get<UserRecord[]>('/api/user/list', { params });
+}
+
+export function userInfo(params: { id: number }) {
+  return axios.get<UserRecord>('/api/user/infos', { params });
+}

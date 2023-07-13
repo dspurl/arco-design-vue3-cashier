@@ -31,21 +31,24 @@
   },
   "dependencies": {
     "@arco-design/web-vue": "^2.44.7",
-    "@arco-themes/vue-cashier": "^0.0.1",
+    "@arco-themes/vue-cashiers": "^0.0.1",
     "@vueuse/core": "^9.3.0",
     "axios": "^0.24.0",
     "dayjs": "^1.11.5",
     "echarts": "^5.4.0",
     "lodash": "^4.17.21",
     "mitt": "^3.0.0",
+    "moment": "^2.29.4",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.23",
     "query-string": "^8.0.3",
     "sortablejs": "^1.15.0",
+    "uuid": "^9.0.0",
     "vue": "^3.2.40",
     "vue-echarts": "^6.2.3",
     "vue-i18n": "^9.2.2",
-    "vue-router": "^4.0.14"
+    "vue-router": "^4.0.14",
+    "vue3-uuid": "^1.0.0"
   },
   "devDependencies": {
     "@arco-plugins/vite-vue": "^1.4.5",

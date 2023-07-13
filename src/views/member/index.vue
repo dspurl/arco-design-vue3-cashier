@@ -1,8 +1,34 @@
 <template>
-  <div class="container">这是会员</div>
+  <div class="container">
+    <div class="left-side">
+      <div class="panel">
+        <User />
+      </div>
+    </div>
+    <div class="right-side">
+      <Info />
+    </div>
+  </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+  import { provide, ref } from 'vue';
+  import User from './components/user.vue';
+  import Info from './components/info.vue';
+
+  const user = ref(); // 用户
+  const isDefaultUser = true; // 是否需要默认选中用户
+
+  function updateUser(value: any) {
+    user.value = value;
+  }
+
+  provide('user', {
+    user,
+    updateUser,
+  });
+  provide('isDefaultUser', isDefaultUser);
+</script>
 
 <script lang="ts">
   export default {
@@ -12,18 +38,47 @@
 
 <style scoped lang="less">
   .container {
-    padding: 0 20px 20px 20px;
-    height: calc(100% - 40px);
-    :deep(.content) {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-      text-align: center;
-      background-color: var(--color-bg-1);
-      border-radius: 4px;
+    background-color: var(--color-fill-2);
+    padding: 16px 20px;
+    padding-bottom: 0;
+    display: flex;
+  }
+
+  .left-side {
+    width: 380px;
+    overflow: auto;
+  }
+
+  .right-side {
+    flex: 1;
+    width: 0;
+    margin-left: 16px;
+  }
+
+  .panel {
+    background-color: var(--color-bg-2);
+    border-radius: 4px;
+    overflow: auto;
+  }
+
+  :deep(.panel-border) {
+    margin-bottom: 0;
+    border-bottom: 1px solid rgb(var(--gray-2));
+  }
+</style>
+
+<style lang="less" scoped>
+  // responsive
+  .mobile {
+    .container {
+      display: block;
+    }
+
+    .right-side {
+      // display: none;
+      width: 100%;
+      margin-left: 0;
+      margin-top: 16px;
     }
   }
 </style>
