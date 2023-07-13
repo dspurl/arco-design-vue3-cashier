@@ -2,15 +2,12 @@
   <div class="navbar">
     <div class="left-side">
       <a-space>
-        <img
-          alt="logo"
-          src="//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/dfdba5317c0c20ce20e64fac803d52bc.svg~tplv-49unhts6dw-image.image"
-        />
+        <a-image alt="logo" width="30" :src="logo" />
         <a-typography-title
           :style="{ margin: 0, fontSize: '18px' }"
           :heading="5"
         >
-          Arco Pro
+          {{ title }}
         </a-typography-title>
         <icon-menu-fold
           v-if="!topMenu && appStore.device === 'mobile'"
@@ -23,6 +20,13 @@
       <Menu v-if="topMenu" />
     </div>
     <ul class="right-side">
+      <li class="date-box">
+        <div class="time">{{ time }}</div>
+        <div class="date">
+          <div class="day">{{ day }}</div>
+          <div class="week">{{ week }}</div>
+        </div>
+      </li>
       <li>
         <a-tooltip :content="$t('settings.language')">
           <a-button
@@ -185,8 +189,10 @@
 
 <script lang="ts" setup>
   import { computed, ref, inject } from 'vue';
+  import moment from 'moment';
   import { Message } from '@arco-design/web-vue';
   import { useDark, useToggle, useFullscreen } from '@vueuse/core';
+  import logo from '@/assets/images/logo.png';
   import { useAppStore, useUserStore } from '@/store';
   import { LOCALE_OPTIONS } from '@/locale';
   import useLocale from '@/hooks/locale';
@@ -206,6 +212,7 @@
   const theme = computed(() => {
     return appStore.theme;
   });
+  const title = import.meta.env.VITE_TITLE;
   const topMenu = computed(() => appStore.topMenu && appStore.menu);
   const isDark = useDark({
     selector: 'body',
@@ -251,6 +258,29 @@
     Message.success(res as string);
   };
   const toggleDrawerMenu = inject('toggleDrawerMenu') as () => void;
+  const time = ref();
+  const day = moment().format('MM-DD');
+  const week = computed(() => {
+    const weeks = moment().weekday();
+    let values = '星期日';
+    if (weeks === 1) {
+      values = '星期一';
+    } else if (weeks === 2) {
+      values = '星期二';
+    } else if (weeks === 3) {
+      values = '星期三';
+    } else if (weeks === 4) {
+      values = '星期四';
+    } else if (weeks === 5) {
+      values = '星期五';
+    } else if (weeks === 6) {
+      values = '星期六';
+    }
+    return values;
+  });
+  setInterval(() => {
+    time.value = moment().format('HH:mm');
+  }, 1000);
 </script>
 
 <style scoped lang="less">
@@ -278,6 +308,18 @@
     list-style: none;
     :deep(.locale-select) {
       border-radius: 20px;
+    }
+    .date-box {
+      display: flex;
+      align-items: center;
+      .time {
+        font-weight: 700;
+        font-size: 18px;
+        margin-right: 5px;
+      }
+      .date {
+        font-size: 12px;
+      }
     }
     li {
       display: flex;

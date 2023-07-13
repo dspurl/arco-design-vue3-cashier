@@ -1,11 +1,8 @@
 <template>
   <div class="container">
     <div class="logo">
-      <img
-        alt="logo"
-        src="//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/dfdba5317c0c20ce20e64fac803d52bc.svg~tplv-49unhts6dw-image.image"
-      />
-      <div class="logo-text">Arco Design Pro</div>
+      <a-image alt="logo" width="30" :src="logo" />
+      <div class="logo-text">Arco Design Pro for Vue3 Cashier</div>
     </div>
     <LoginBanner />
     <div class="content">
@@ -20,9 +17,11 @@
 </template>
 
 <script lang="ts" setup>
+  import logo from '@/assets/images/logo.png';
   import Footer from '@/components/footer/index.vue';
   import LoginBanner from './components/banner.vue';
   import LoginForm from './components/login-form.vue';
+  
 </script>
 
 <style lang="less" scoped>

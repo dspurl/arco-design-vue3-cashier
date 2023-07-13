@@ -1,8 +1,10 @@
 <template>
-  <a-layout-footer class="footer">Arco Pro</a-layout-footer>
+  <a-layout-footer class="footer">{{ title }}</a-layout-footer>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+  const title = import.meta.env.VITE_TITLE;
+</script>
 
 <style lang="less" scoped>
   .footer {

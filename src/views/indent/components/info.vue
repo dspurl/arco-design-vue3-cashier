@@ -158,7 +158,9 @@
             >
           </div>
 
-          <a-button type="primary" status="success">小票打印</a-button>
+          <a-button type="primary" status="success" @click="printVisible = true"
+            >小票打印</a-button
+          >
         </div>
       </div>
     </a-spin>
@@ -167,6 +169,11 @@
       :money="info.amount_paid"
       :way="info.way"
       @cancel="refundVisible = false"
+    />
+    <OrderPrint
+      :visible="printVisible"
+      :info="info"
+      @cancel="printVisible = false"
     />
   </a-card>
 </template>
@@ -177,9 +184,11 @@
   import { indentInfo } from '@/api/indent';
   import { thousands } from '@/utils';
   import OrderRefund from './order-refund.vue';
+  import OrderPrint from './order-print.vue';
 
   const { indentId } = inject<any>('indent');
   const refundVisible = ref(false);
+  const printVisible = ref(false);
   const info = ref<any>({} as any);
   const { loading, setLoading } = useLoading();
   async function getIndentInfo() {

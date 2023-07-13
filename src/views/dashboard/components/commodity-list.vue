@@ -81,6 +81,26 @@
   const keyword = ref();
   const list = ref<CommodityRecord[]>();
   const { loading, setLoading } = useLoading();
+  function paramData(data: CommodityRecord) {
+    return param2Data(data);
+  }
+  const handleGood = (item: CommodityRecord) => {
+    const { commodity } = cart.value;
+    let number = 0;
+    commodity.forEach((items: { id: number; number: number }) => {
+      if (items.id === item.id) {
+        number = items.number;
+      }
+    });
+    if (item.sku) {
+      visible.value = true;
+      sku.value = paramData(item);
+    } else if (item.inventory !== 0 && number < item.inventory) {
+      const skus = JSON.parse(JSON.stringify(item));
+      skus.number = 1;
+      updateCart(skus);
+    }
+  };
   async function getCommodityList() {
     try {
       setLoading(true);
@@ -89,15 +109,17 @@
         keyword: keyword.value,
       });
       list.value = data;
+      if (keyword.value && list.value.length === 1) {
+        handleGood(list.value[0]);
+        console.log('直接加入购物车');
+      }
     } catch (err) {
       // you can report use errorHandler or other
     } finally {
       setLoading(false);
     }
   }
-  function paramData(data: CommodityRecord) {
-    return param2Data(data);
-  }
+
   const updateCartCommodityList = computed(() => (id: number) => {
     const { commodity } = cart.value;
     let number = 0;
@@ -116,23 +138,6 @@
     );
     return number;
   });
-  const handleGood = (item: CommodityRecord) => {
-    const { commodity } = cart.value;
-    let number = 0;
-    commodity.forEach((items: { id: number; number: number }) => {
-      if (items.id === item.id) {
-        number = items.number;
-      }
-    });
-    if (item.sku) {
-      visible.value = true;
-      sku.value = paramData(item);
-    } else if (item.inventory !== 0 && number < item.inventory) {
-      const skus = JSON.parse(JSON.stringify(item));
-      skus.number = 1;
-      updateCart(skus);
-    }
-  };
   watch([() => props.classifyId, () => props.keyword], ([newval1, newval2]) => {
     classifyId.value = newval1;
     keyword.value = newval2;

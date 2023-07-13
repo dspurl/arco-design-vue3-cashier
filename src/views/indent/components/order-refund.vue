@@ -2,7 +2,6 @@
   <a-modal
     :visible="isVisible"
     :footer="false"
-    width="600"
     draggable
     @cancel="handleCancel"
   >
@@ -64,12 +63,6 @@
       handleCancel();
     }
   };
-  watch(
-    () => props.money,
-    (newval) => {
-      form.money = newval;
-    }
-  );
   watch([() => props.money, () => props.way], ([newval1, newval2]) => {
     form.money = newval1;
     form.way = newval2;

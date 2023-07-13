@@ -5,18 +5,28 @@
     :body-style="{ padding: '15px' }"
   >
     <a-input-search
-      placeholder="搜索手机号/昵称"
+      ref="keywordRef"
+      placeholder="搜索手机号/昵称或点击聚焦扫码"
       allow-clear
-      @input="keywordInput"
+      @change="keywordInput"
     />
   </a-card>
 </template>
 
 <script lang="ts" setup>
+  import { nextTick, ref } from 'vue';
+
   const emit = defineEmits(['keywordInput']);
+  const keywordRef = ref();
   function keywordInput(value: any) {
     emit('keywordInput', value);
   }
+
+  nextTick(() => {
+    if (keywordRef.value) {
+      keywordRef.value.focus();
+    }
+  });
 </script>
 
 <style scoped lang="less"></style>
