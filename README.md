@@ -17,7 +17,18 @@ ADVC
   </a>
 </div>
 
-## 计划实现：
+## 快速上手
+```
+$ npm run dev
+```
+
+## 打包
+```
+$ npm run build
+$ npm run preview
+```
+
+## 计划实现
 - 多语言
 - 充值
 - 数据报表
