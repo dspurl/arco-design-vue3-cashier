@@ -306,6 +306,7 @@
     display: flex;
     padding-right: 20px;
     list-style: none;
+    color: var(--color-neutral-10);
     :deep(.locale-select) {
       border-radius: 20px;
     }

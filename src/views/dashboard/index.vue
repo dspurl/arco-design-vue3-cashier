@@ -137,11 +137,15 @@
     Message.success('删除成功');
   }
   // 清空购物车
-  function emptyCart() {
+  function emptyCart(isClearing = false) {
     cart.value.commodity = [];
     cart.value.sum = 0;
     cart.value.total = 0;
-    Message.success('清空成功');
+    if (!isClearing) {
+      Message.success('清空成功');
+    } else {
+      Message.success('结算成功');
+    }
   }
   // 挂单到购物车
   function pendingToCart(item: any) {
