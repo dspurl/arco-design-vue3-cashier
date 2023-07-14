@@ -8,7 +8,6 @@ import configImageminPlugin from './plugin/imagemin';
 export default mergeConfig(
   {
     mode: 'production',
-    base: '/arco-design-vue3-cashier/',
     plugins: [
       configCompressPlugin('gzip'),
       configVisualizerPlugin(),
