@@ -7,5 +7,5 @@ import '@/views/dashboard/mock';
 import '@/views/indent/mock';
 
 Mock.setup({
-  timeout: '600-1000',
+  timeout: '200-800',
 });
