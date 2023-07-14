@@ -225,7 +225,6 @@
 
 <style scoped lang="less">
   .general-card {
-    min-width: 700px;
     min-height: 450px;
     height: calc(~'100vh - 92px');
     :deep(.arco-spin) {
@@ -349,12 +348,20 @@
       padding: 15px 15px;
       .item-box {
         flex: 1;
+        min-width: 0;
         .item {
           display: flex;
           line-height: 25px;
           .name {
             width: 70px;
             font-weight: 500;
+          }
+          .value {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
           }
         }
       }

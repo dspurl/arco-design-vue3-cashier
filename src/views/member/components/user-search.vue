@@ -21,6 +21,7 @@
       placeholder="搜索手机号/昵称或点击聚焦扫码"
       allow-clear
       @change="keywordInput"
+      @focus="stopKeyborad"
     />
   </a-card>
 </template>
@@ -33,7 +34,12 @@
   function keywordInput(value: any) {
     emit('keywordInput', value);
   }
-
+  const stopKeyborad = (e: any) => {
+    e.target.setAttribute('readonly', true);
+    setTimeout(() => {
+      e.target.removeAttribute('readonly');
+    }, 100);
+  };
   nextTick(() => {
     if (keywordRef.value) {
       keywordRef.value.focus();
