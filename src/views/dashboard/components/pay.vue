@@ -255,7 +255,7 @@
   const handleConfirm = (res: boolean) => {
     if (res) {
       // 创建订单
-      emptyCart();
+      emptyCart(true);
       handleCancel();
     }
   };
