@@ -169,10 +169,15 @@
               >退款</a-button
             >
           </div>
-
-          <a-button type="primary" status="success" @click="printVisible = true"
-            >小票打印</a-button
-          >
+          <div>
+            <a-button
+              v-if="info.state === 1"
+              type="primary"
+              status="success"
+              @click="printVisible = true"
+              >小票打印</a-button
+            >
+          </div>
         </div>
       </div>
     </a-spin>
