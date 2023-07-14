@@ -1,6 +1,15 @@
+/** +----------------------------------------------------------------------
+ * | ADVC [ 基于Arco Design开箱即用的收银台前端/设计解决方案 ]
+ * +----------------------------------------------------------------------
+ * | Copyright (c) 2023~2023 dspurl All rights reserved.
+ * +----------------------------------------------------------------------
+ * | Licensed 未经许可不能去掉ADVC相关版权
+ * +----------------------------------------------------------------------
+ * | Author: dsPurl <383354826@qq.com>
+ * +----------------------------------------------------------------------
+ */
 import Mock from 'mockjs';
 import qs from 'query-string';
-import dayjs from 'dayjs';
 import { GetParams } from '@/types/global';
 import setupMock, { successResponseWrap } from '@/utils/setup-mock';
 
