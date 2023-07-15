@@ -64,7 +64,7 @@ $ npm run preview
 
 ## 捐赠
 
-<img src="https://dspurl.github.io/ADVC/20230714102300.jpg" width="200" height="200"/>
+<img src="https://dspurl.github.io/ADVC/20230714102300.jpg" width="300" height="300"/>
 
 ## License
 MIT
