@@ -122,6 +122,7 @@
     () => props.keyword,
     (newval) => {
       keyword.value = newval;
+      page = 1;
       getUserList();
     }
   );
