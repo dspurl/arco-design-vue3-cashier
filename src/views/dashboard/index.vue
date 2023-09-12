@@ -31,6 +31,7 @@
   import { provide, ref } from 'vue';
   import { onBeforeRouteLeave } from 'vue-router';
   import { CommodityRecord } from '@/api/dashboard';
+  import { cloneDeep } from 'lodash';
   import Cart from './components/cart.vue';
   import Commodity from './components/commodity.vue';
   import Pay from './components/pay.vue';
@@ -149,7 +150,7 @@
   }
   // 挂单到购物车
   function pendingToCart(item: any) {
-    cart.value = item;
+    cart.value = cloneDeep(item);
     if (item.user) {
       user.value = item.user;
     } else {
