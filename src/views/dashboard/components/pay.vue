@@ -68,7 +68,7 @@
           </a-descriptions>
           <a-input-search
             class="buttom"
-            placeholder="点击聚焦扫码或输入支付密码"
+            placeholder="点击聚焦扫码或输入会员卡号"
             button-text="确认"
             search-button
           />
@@ -162,7 +162,7 @@
           取消
         </a-card>
         <a-card
-          v-if="cart.user"
+          v-if="cart.user && balance > 0"
           class="general-card item-box"
           :class="{ on: way === 1 }"
           :header-style="{ paddingBottom: '0' }"
@@ -215,6 +215,7 @@
   );
   const emit = defineEmits(['cancel']);
   const actualPayment = ref(0);
+  const balance = ref(0);
   const change = ref(0);
   const print = ref(true);
   const way = ref(2);
@@ -231,7 +232,7 @@
     payState.value = 3;
   };
   // 扫码支付
-  const handlePay = (value: string) => {
+  const handlePay = () => {
     payState.value = 1;
     // 进行支付处理
   };
@@ -266,6 +267,10 @@
         payState.value = 0;
         way.value = 2;
         actualPayment.value = cart.value.total;
+        // 计算会员余额，不为零才展示会员支付
+        if (cart.value.user) {
+          balance.value = cart.value.user.money - cart.value.total;
+        }
         nextTick(() => {
           if (productIdRef.value) {
             productIdRef.value.focus();
